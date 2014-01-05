@@ -9,4 +9,6 @@
 
  bool IsOtto(const std::string & st);
 
+ bool IsOttoDiffCaps(const std::string & st); 
+
 #endif //TRY0101_TRY0101_GOBLALFUN_H
