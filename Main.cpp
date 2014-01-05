@@ -121,8 +121,26 @@ void main()
   }
   ofile.close();
   cout << "Bye\n";
-  
+  // 使用vector 替代 数组进行文件读写
+
+  longline(4); //4
+  long ch[7]={1, 3, 3, 5, 1, 1};
+  int afterlenght = Reduce(ch, 7);
+  cout << " {1, 3, 3, 5, 1, 1} " << " Redcue lenth = " << afterlenght << endl;
+   //list 轻松愉快..
+
+  longline(5);//5
+  long chh[7]={1, 3, 3, 5, 1, 1};
+  char str[11] = {"woleigequo"};
+  int chh_reduced = Reduce_(chh, 7);
+  int str_reduced = Reduce_(str, 11);
+  cout << " {1, 3, 3, 5, 1, 1} " << "  chh_reduced = " << chh_reduced  << endl;
+  cout << "woleigequo" << "   str_reduced = " << str_reduced << endl;
+  // 模版中使用 容器和 stl  
 
   longline();
   system("pause");
+
+
+
 }

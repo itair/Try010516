@@ -3,6 +3,9 @@
 #include "GobalFuc.h"
 #include <iostream>
 #include <cctype>
+#include <list>
+#include <algorithm>
+#include <functional>
 
  void showtitle(void) { 
   using namespace std;
@@ -35,3 +38,16 @@ bool IsOttoDiffCaps(const std::string & st) {
   }
   return true; 
 } 
+
+int Reduce (long ar[], int n) {
+  using namespace std;
+  list<long> lar;
+  for (int i = 0; i < n; i++) {
+    lar.push_back(ar[i]);
+  }   
+  lar.sort();
+  lar.unique();
+//   sort(lar.begin(), lar.end());
+//   unique(lar.begin(), lar.end());
+  return (int)lar.size();
+}

@@ -4,6 +4,8 @@
 #define TRY0101_TRY0101_GOBLALFUN_H
 
 #include <string>
+#include <list>
+#include <algorithm>
 
  void showtitle(void);
 
@@ -11,5 +13,18 @@
 
  bool IsOttoDiffCaps(const std::string & st); 
  
+ int Reduce (long ar[], int n);
+
+ template<class T>
+ int Reduce_(T ar[], int n){
+   list<long> lar;
+   for (int i = 0; i < n; i++) {
+     lar.push_back(ar[i]);
+   }   
+   lar.sort();
+   lar.unique();
+   return (int)lar.size(); 
+ }
+
 
 #endif //TRY0101_TRY0101_GOBLALFUN_H
