@@ -6,6 +6,7 @@
 #include <string>
 #include <list>
 #include <algorithm>
+#include <vector>
 
  void showtitle(void);
 
@@ -26,5 +27,6 @@
    return (int)lar.size(); 
  }
 
+std::vector<int> Lotto(const int , const int);
 
 #endif //TRY0101_TRY0101_GOBLALFUN_H
