@@ -3,7 +3,18 @@
 #ifndef TRY0101_TRY0101_INLINE_H
 #define TRY0101_TRY0101_INLINE_H
 #include <iostream>
+#include <vector>
+
 //常用内联
+
+const int kNUM = 26;
+const std::string wordlist[kNUM] = {"apiary", "beetle", "cereal",
+  "danger", "ensign", "florid", "garage", "health", "insult",
+  "jackal", "keeper", "loaner", "manage", "nonce", "onset",
+  "plaid", "quilt", "remote", "stolid", "train", "useful",
+  "valid", "whence", "xenon", "yearn", "zippy"};
+
+
 
 inline void longline(void) { 
   std::cout<< "_________________________\n\n";

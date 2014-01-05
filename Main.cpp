@@ -8,6 +8,10 @@
 #include "Inline.h"
 #include <iostream>
 #include <string>
+#include <cstdlib>
+#include <ctime>
+#include <vector>
+#include <fstream>
 
 
 using namespace std;
@@ -30,6 +34,94 @@ void main()
   cout << str1 << "\t\t\t" << IsOttoDiffCaps(str1) << endl;
   cout << str2 << "\t\t\t" << IsOttoDiffCaps(str2) << endl;
   cout << str3 << "\t\t" << IsOttoDiffCaps(str3) << endl;
+  // 回文 带字符转换
+
+  longline(3); //3
+  std::srand((unsigned)std::time(0));
+  vector<const string> wordlistvector;
+  fstream ofile;
+  ofile.open("wordbook.txt", ios_base::in);
+  if (ofile.is_open())  {
+    string temp;
+    while (ofile.good())  { 
+      ofile >> temp;      
+      wordlistvector.push_back(temp);    
+    }
+  } else {
+    cout << "Can't open wordbook.txt\n";
+    system("pause");
+    exit(EXIT_FAILURE);
+  }
+  
+  char play;
+  cout << "Will you play a word game? <y/n> ";
+  cin >> play;
+  play = tolower(play);
+  while (play == 'y')
+  {
+    
+    string target = wordlistvector.at(std::rand() % wordlistvector.size());
+    int length = target.length();
+    string attempt(length, '-');
+    string badchars;
+    int guesses = 6;
+
+
+    cout << "Guess my secret word. It has " << length
+      << " letters, and you guess\n"
+      << "one letter at a time. You get " << guesses
+      << " wrong guesses.\n";
+    cout << "Your word: " << attempt << endl;
+    while (guesses > 0 && attempt != target)
+    {
+      char letter;
+      cout << "Guess a letter: ";
+      cin >> letter;
+      if (badchars.find(letter) != string::npos
+        || attempt.find(letter) != string::npos)
+      {
+        cout << "You already guessed that. Try again.\n";
+        continue;
+      }
+      int loc = target.find(letter);
+      if (loc == string::npos)
+      {
+        cout << "Oh, bad guess!\n";
+        --guesses;
+        badchars += letter; // add to string
+      }
+      else
+      {
+        cout << "Good guess!\n";
+        attempt[loc]=letter;
+        // check if letter appears again
+        loc = target.find(letter, loc + 1);
+        while (loc != string::npos)
+        {
+          attempt[loc]=letter;
+          loc = target.find(letter, loc + 1);
+        }
+      }
+      cout << "Your word: " << attempt << endl;
+      if (attempt != target)
+      {
+        if (badchars.length() > 0)
+          cout << "Bad choices: " << badchars << endl;
+        cout << guesses << " bad guesses left\n";
+      }
+    }
+    if (guesses > 0)
+      cout << "That's right!\n";
+    else
+      cout << "Sorry, the word is " << target << ".\n";
+
+    cout << "Will you play another? <y/n> ";
+    cin >> play;
+    play = tolower(play);
+  }
+  ofile.close();
+  cout << "Bye\n";
+  
 
   longline();
   system("pause");
