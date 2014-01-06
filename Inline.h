@@ -13,7 +13,9 @@ const std::string wordlist[kNUM] = {"apiary", "beetle", "cereal",
   "jackal", "keeper", "loaner", "manage", "nonce", "onset",
   "plaid", "quilt", "remote", "stolid", "train", "useful",
   "valid", "whence", "xenon", "yearn", "zippy"};
-
+const unsigned int kBigN = 100000;
+const unsigned int kBigNN = 1000000;
+const unsigned int kBigNNN = 10000000;
 
 
 inline void longline(void) { 

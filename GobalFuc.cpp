@@ -6,6 +6,9 @@
 #include <list>
 #include <algorithm>
 #include <functional>
+#include <cstdlib>
+#include <ctime>
+#include <chrono>
 
  void showtitle(void) { 
   using namespace std;
@@ -85,8 +88,8 @@ void InputName(std::list<std::string>& li) {
 }
 
 void ShowList(std::list<std::string>& li) {
-  /*std::sort(std::list.begin(), std::list.end());*/
-  li.sort();
+  /*std::sort(std::list.begin(), std::list.end());*/ //费事 速度快
+  li.sort(); //省事 狂慢
   for (std::string st : li)  {
     std::cout<< st << std::endl;
   }
@@ -100,3 +103,56 @@ std::list<std::string> MergeList(const std::list<std::string>& la,
   laa.unique();
   return laa;
 }
+
+//9
+void CopyVector2List(std::vector<int>& vv, std::list<int>& li) {
+  if (!li.empty())  {
+    li.clear();
+  }
+  for(int num: vv){
+    li.push_back(num);
+  }   
+}
+
+void InitVectorRand(std::vector<int>& vv, const int nn) {
+  if (!vv.empty())
+    vv.clear();
+  unsigned int num;
+  for (int i = 0; i < nn; i++) {
+   num = rand();
+    vv.push_back(num);
+  }
+}
+
+void VectorSTLSortTimer(std::vector<int>& vv) {
+  clock_t start = clock();
+  std::sort(vv.begin(),vv.end());
+  clock_t end = clock();
+  std::cout << "STL sort() use: " 
+            << (end - start) << " ms " << std::endl;
+}
+
+void ListSortTimer(std::list<int>& li) {
+  clock_t start = clock();
+  li.sort();
+  clock_t end = clock();
+  std::cout << "List.sort() use: " 
+    << (end - start) << " ms " <<  std::endl;
+}
+
+void List2VectorSort2ListTimer(std::vector<int>& vv, std::list<int>& li) {
+  if (!vv.empty()) 
+    vv.clear();
+   clock_t start = clock();
+   for (int num : li) {
+     vv.push_back(num);
+   }
+   sort(vv.begin(), vv.end());
+   li.clear();
+   for(int num: vv){
+     li.push_back(num);
+   }   
+   clock_t end = clock();
+   std::cout << "List copy to vector use STL sort() then copyback use: " 
+     << (end - start) << " ms " << std::endl;
+}  //name.....真是太有才了我

@@ -12,6 +12,7 @@
 #include <ctime>
 #include <vector>
 #include <fstream>
+#include <list>
 
 using namespace std;
 
@@ -161,7 +162,38 @@ void main()
   ShowList (namelist);
   // list 用法和 stl函数
 
+  longline(9); //9
+  vector<int> vi0 ;
+  vector<int> vi;
+  list<int> li;
 
+  cout << "Number set : " << kBigN << endl;
+  InitVectorRand(vi0, kBigN);
+  vi = vi0;
+  CopyVector2List(vi0, li);
+  ListSortTimer(li);
+  VectorSTLSortTimer(vi);
+  CopyVector2List(vi0, li);
+  List2VectorSort2ListTimer(vi, li);
+
+  cout << "Number set : " << kBigNN << endl;
+  InitVectorRand(vi0, kBigNN);
+  vi = vi0;
+  CopyVector2List(vi0, li);
+  ListSortTimer(li);
+  VectorSTLSortTimer(vi);
+  CopyVector2List(vi0, li);
+  List2VectorSort2ListTimer(vi, li);
+
+  cout << "Number set : " << kBigNNN << endl;
+  InitVectorRand(vi0, kBigNNN);
+  vi = vi0;
+  CopyVector2List(vi0, li);
+  ListSortTimer(li);
+  VectorSTLSortTimer(vi);
+  CopyVector2List(vi0, li);
+  List2VectorSort2ListTimer(vi, li);
+  //记得一定要 用released版运行,,debug版慢得要死...
 
   longline();
   system("pause");
