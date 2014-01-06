@@ -156,3 +156,52 @@ void List2VectorSort2ListTimer(std::vector<int>& vv, std::list<int>& li) {
    std::cout << "List copy to vector use STL sort() then copyback use: " 
      << (end - start) << " ms " << std::endl;
 }  //name.....真是太有才了我
+
+
+bool operator<(const  Review &  r1, const Review & r2)
+{
+  if (r1.title < r2.title)
+    return true;
+  else if (r1.title == r2.title &&  r1.rating < r2.rating )
+    return true;
+  else if (r1.title == r2.title && r1.rating == r2.rating &&
+    r1.price < r2.price)  {
+      return true;
+  } else
+    return false;
+}
+
+bool worseThan(const  Review &  r1,   const  Review &  r2)
+{
+  if (r1.rating < r2.rating)
+    return true;
+  else
+    return false;
+}
+
+bool FillReview(Review & rr)
+{
+  std::shared_ptr<Review> spt(new Review);
+  std::cout << "Enter book title (quit to quit): ";
+  std::getline(std::cin,spt->title);
+  if (rr.title == "quit")
+    return false;
+  std::cout << "Enter book rating: ";
+  std::cin >> spt->rating;
+  if (!std::cin)
+    return false;
+  std::cout << "Enter book price: ";
+  std::cin >> spt->price;
+  if (!std::cin)
+    return false;
+  std::cin.get();
+  rr = *spt;
+  return true;
+}
+
+void ShowReview(const Review & rr)
+{
+  std::cout << rr.rating << "\t" 
+    << rr.title << "\t"
+    << rr.price << std::endl; 
+}

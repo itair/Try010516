@@ -13,6 +13,9 @@
 #include <vector>
 #include <fstream>
 #include <list>
+#include <memory>
+#include <numeric>
+#include <algorithm>
 
 using namespace std;
 
@@ -148,53 +151,76 @@ void main()
   }// 随机数
 
   longline(8);//
-  list<string> matlist;
-  list<string> patlist;
-  cout << "Enter Mat's namelist:-------------------\n";
-  InputName(matlist);
-  ShowList (matlist);
-  cout<< "Enter Pat's namelist:----------------- \n";
-  InputName(patlist);
-  ShowList (patlist);
-  list<string> namelist;
-  namelist = MergeList (patlist, matlist);
-  cout << "The namelist :-----------------\n";
-  ShowList (namelist);
+//   list<string> matlist;
+//   list<string> patlist;
+//   cout << "Enter Mat's namelist:-------------------\n";
+//   InputName(matlist);
+//   ShowList (matlist);
+//   cout<< "Enter Pat's namelist:----------------- \n";
+//   InputName(patlist);
+//   ShowList (patlist);
+//   list<string> namelist;
+//   namelist = MergeList (patlist, matlist);
+//   cout << "The namelist :-----------------\n";
+//   ShowList (namelist);
   // list 用法和 stl函数
 
   longline(9); //9
   vector<int> vi0 ;
   vector<int> vi;
   list<int> li;
-
-  cout << "Number set : " << kBigN << endl;
-  InitVectorRand(vi0, kBigN);
-  vi = vi0;
-  CopyVector2List(vi0, li);
-  ListSortTimer(li);
-  VectorSTLSortTimer(vi);
-  CopyVector2List(vi0, li);
-  List2VectorSort2ListTimer(vi, li);
-
-  cout << "Number set : " << kBigNN << endl;
-  InitVectorRand(vi0, kBigNN);
-  vi = vi0;
-  CopyVector2List(vi0, li);
-  ListSortTimer(li);
-  VectorSTLSortTimer(vi);
-  CopyVector2List(vi0, li);
-  List2VectorSort2ListTimer(vi, li);
-
-  cout << "Number set : " << kBigNNN << endl;
-  InitVectorRand(vi0, kBigNNN);
-  vi = vi0;
-  CopyVector2List(vi0, li);
-  ListSortTimer(li);
-  VectorSTLSortTimer(vi);
-  CopyVector2List(vi0, li);
-  List2VectorSort2ListTimer(vi, li);
+// 
+//   cout << "Number set : " << kBigN << endl;
+//   InitVectorRand(vi0, kBigN);
+//   vi = vi0;
+//   CopyVector2List(vi0, li);
+//   ListSortTimer(li);
+//   VectorSTLSortTimer(vi);
+//   CopyVector2List(vi0, li);
+//   List2VectorSort2ListTimer(vi, li);
+// 
+//   cout << "Number set : " << kBigNN << endl;
+//   InitVectorRand(vi0, kBigNN);
+//   vi = vi0;
+//   CopyVector2List(vi0, li);
+//   ListSortTimer(li);
+//   VectorSTLSortTimer(vi);
+//   CopyVector2List(vi0, li);
+//   List2VectorSort2ListTimer(vi, li);
+// 
+//   cout << "Number set : " << kBigNNN << endl;
+//   InitVectorRand(vi0, kBigNNN);
+//   vi = vi0;
+//   CopyVector2List(vi0, li);
+//   ListSortTimer(li);
+//   VectorSTLSortTimer(vi);
+//   CopyVector2List(vi0, li);
+//   List2VectorSort2ListTimer(vi, li);
   //记得一定要 用released版运行,,debug版慢得要死...
 
+  longline(10); //10 ///////////////////////////////////////////
+  vector<Review> books ;
+   Review temp;
+  while (FillReview(temp)){   
+    books.push_back(temp);
+  }
+  cout << "Thank you. You entered the following "
+    << books.size() << " ratings:\n"
+    << "Rating\tBook\n";
+  for(Review pt: books) ShowReview(pt);
+  sort(books.begin(), books.end());
+  cout << "Sorted by title:\nRating\tBook\n";
+  for_each(books.begin(), books.end(), ShowReview);
+
+  sort(books.begin(), books.end(), worseThan);
+  cout << "Sorted by rating:\nRating\tBook\n";
+  for_each(books.begin(), books.end(), ShowReview);
+
+  random_shuffle(books.begin(), books.end());
+  cout << "After shuffling:\nRating\tBook\n";
+  for_each(books.begin(), books.end(), ShowReview);
+  cout << "Bye.\n";
+  ////////////////////////////////////////////////////////////
   longline();
   system("pause");
 

@@ -6,7 +6,7 @@
 #include <string>
 #include <list>
 #include <vector>
-
+#include <memory>
 
  void showtitle(void);
 
@@ -44,5 +44,19 @@ void VectorSTLSortTimer(std::vector<int>&);
 void ListSortTimer(std::list<int>&);
 
 void List2VectorSort2ListTimer(std::vector<int>&, std::list<int>&);  //name.....
+
+struct Review {
+  std::string title;
+  int rating;
+  double price;
+};
+
+bool operator<(const Review & r1, 
+                const  Review &  r2);
+bool worseThan(const  Review &  r1, 
+               const  Review &  r2);
+bool FillReview( Review &  rr);
+void ShowReview(const  Review &  rr);
+
 
 #endif //TRY0101_TRY0101_GOBLALFUN_H
