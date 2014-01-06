@@ -137,13 +137,31 @@ void main()
   cout << "woleigequo" << "   str_reduced = " << str_reduced << endl;
   // 模版中使用 容器和 stl  
 
-  longline(6); // 6
+  longline(6); // 6不写了  用vector 整体替代
+
+  longline(7); // 7
   vector<int> winners;
   winners = Lotto(51,6);
   for ( int i : winners) {
     cout << i << endl;
-  }
-  
+  }// 随机数
+
+  longline(8);//
+  list<string> matlist;
+  list<string> patlist;
+  cout << "Enter Mat's namelist:-------------------\n";
+  InputName(matlist);
+  ShowList (matlist);
+  cout<< "Enter Pat's namelist:----------------- \n";
+  InputName(patlist);
+  ShowList (patlist);
+  list<string> namelist;
+  namelist = MergeList (patlist, matlist);
+  cout << "The namelist :-----------------\n";
+  ShowList (namelist);
+  // list 用法和 stl函数
+
+
 
   longline();
   system("pause");

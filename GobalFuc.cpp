@@ -68,3 +68,35 @@ std::vector<int>  Lotto(const int pools, const int picks) {
   }
   return re; //±àÒëÊ±¾ö¶¨Ë³Ğò?
 }
+
+//8
+void InputName(std::list<std::string>& li) {
+  if (li.empty()) {
+    std::string instr;
+    std::cin.clear();
+    std::cin.sync();
+     while ( std::cin >> instr)  {
+       li.push_back(instr);
+     }    
+  }  else  {
+    std::cout << "Namelist exist!\n";
+    return;
+  }
+}
+
+void ShowList(std::list<std::string>& li) {
+  /*std::sort(std::list.begin(), std::list.end());*/
+  li.sort();
+  for (std::string st : li)  {
+    std::cout<< st << std::endl;
+  }
+}
+
+std::list<std::string> MergeList(const std::list<std::string>& la,
+                                 const std::list<std::string>& lb) {
+  std::list<std::string> laa = la;
+  std::list<std::string> lbb = lb;
+  laa.merge(lbb);
+  laa.unique();
+  return laa;
+}

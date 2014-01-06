@@ -7,6 +7,7 @@
 #include <list>
 #include <algorithm>
 #include <vector>
+#include <list>
 
  void showtitle(void);
 
@@ -28,5 +29,11 @@
  }
 
 std::vector<int> Lotto(const int , const int);
+void InputName(std::list<std::string>&);
+
+void ShowList(std::list<std::string>&);
+
+std::list<std::string> MergeList(const std::list<std::string>&,
+                                 const std::list<std::string>&) ;
 
 #endif //TRY0101_TRY0101_GOBLALFUN_H
